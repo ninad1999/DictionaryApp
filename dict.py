@@ -1,16 +1,16 @@
-from difflib import SequenceMatcher
-
-SequenceMathcher(None,)  # first argument is for "isjunk" like while comparing 2 text lines, you want to ignore spaces or breaklines, then put that as first argument
+from difflib import SequenceMatcher, get_close_matches
 
 import json
 
 data = json.load(open("data.json"))
 
-def find_definition(word) :
+def find_definition(word) :	
 	word = word.lower()
 
 	if word in data:
 		return data[word]
+	elif len(get_close_matches(word, data.keys())) > 0 :
+		return "The word doesn't exist in the dictionary. Did you mean one of these words?: {}".format(get_close_matches(word,data.keys()))
 	else:
 		return "No entry found. Please enter another word."
 
