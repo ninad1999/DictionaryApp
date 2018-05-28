@@ -3,6 +3,7 @@ import json
 import tkinter as tk
 
 window = tk.Tk()
+window.title("Dictionary")
 data = json.load(open("data.json"))
 
 def list_format(lst):
@@ -36,8 +37,8 @@ b1.grid(row = 0, column = 2, sticky="w")
 b1.config(width=10)
 
 e1_value = tk.StringVar()
-e1 = tk.Entry(window, textvariable=e1_value)
-e1.grid(row=0, column=1)
+e1 = tk.Entry(window, textvariable=e1_value, width=60)
+e1.grid(row=0,column=0, columnspan=2)
 e1.config(width=20)
 
 t1 = tk.Text(window, height=10)
